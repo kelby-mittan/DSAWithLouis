@@ -91,6 +91,17 @@ class BinarySearchTree<T: Comparable> {
         // if the right child has a balanace factor of -1
           // then rotate left around the left child
         // rotate right around the left child
+
+        public func invertTree(_ root: Node<T>?) -> Node<T>? {
+        guard let root = root else { return nil }
+        
+        let left = invertTree(root.left)
+        let right = invertTree(root.right)
+        
+        root.left = right
+        root.right = left
+        return root
+    }
     }
 
     private func insertHelper(_ parent: Node<T>, _ node: Node<T>) {
